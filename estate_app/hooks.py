@@ -13,6 +13,8 @@ app_license = "gpl-3.0"
 # app_include_css = "/assets/estate_app/css/estate_app.css"
 # app_include_js = "/assets/estate_app/js/estate_app.js"
 
+app_include_js = "assets/estate_app/js/plots.js"
+
 # include js, css files in header of web template
 # web_include_css = "/assets/estate_app/css/estate_app.css"
 # web_include_js = "/assets/estate_app/js/estate_app.js"
@@ -32,6 +34,8 @@ app_license = "gpl-3.0"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
+
 
 # Svg Icons
 # ------------------
@@ -114,21 +118,25 @@ app_license = "gpl-3.0"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+#override_doctype_class = {
+#	"Property": "estate_app.property"
+#}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
+    "Property" : {
+        "after_insert": "estate_app.events.create_plots"
+    }
+
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+ }
 
 # Scheduled Tasks
 # ---------------
@@ -227,3 +235,4 @@ app_license = "gpl-3.0"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = ["Custom Field"]
